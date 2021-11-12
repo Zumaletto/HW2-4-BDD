@@ -1,8 +1,6 @@
 package ru.netology.data;
 
 import lombok.Value;
-import ru.netology.page.DashboardPage;
-import ru.netology.page.MoneyTransferPage;
 
 public class DataHelper {
     private DataHelper() {
@@ -12,12 +10,14 @@ public class DataHelper {
     public static class AuthInf {
         private String login;
         private String password;
-
     }
 
     public static AuthInf getAuthInf() {
-
         return new AuthInf("vasya", "qwerty123");
+    }
+
+    public static AuthInf getOtherAuthInfo() {
+        return new AuthInf("petya", "123qwerty");
     }
 
     @Value
@@ -25,8 +25,7 @@ public class DataHelper {
         private String code;
     }
 
-    public static VerificationCode getVerificationCodeFor(AuthInf authInf) {
-
+    public static VerificationCode getVerificationCodeFor() {
         return new VerificationCode("12345");
     }
 
@@ -44,6 +43,19 @@ public class DataHelper {
     public static CardInf getCard2() {
 
         return new CardInf("5559 0000 0000 0002", "10 000");
+    }
+
+    public static int getCardBalancePlus(int balance, int sumTransfer){
+        int cardBalancePlus = balance + sumTransfer;
+        return cardBalancePlus;
+    }
+
+    public static int getCardBalanceMinus(int balance, int sumTransfer){
+        int cardBalanceMinus = balance - sumTransfer;
+        if (cardBalanceMinus < 0){
+            return balance;
+        }
+        return cardBalanceMinus;
     }
 
 }
