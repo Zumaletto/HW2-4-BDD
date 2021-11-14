@@ -17,7 +17,7 @@ public class DataHelper {
     }
 
     public static AuthInf getOtherAuthInfo() {
-        return new AuthInf("petya", "123qwerty");
+        return new AuthInf("oleg", "123qwerty");
     }
 
     @Value
