@@ -88,11 +88,13 @@ public class MoneyTransferTest {
         val transferPage = dashboardPage.clickButtonCard1();
         val cardInfo2 = getCard2();
         transferPage.transfer(sumTransfer, cardInfo2);
-        val balanceAfterCard2 = getCardBalanceMinus(balanceBeforeCard2, sumTransfer);
-        val balanceAfterCard1 = getCardBalancePlus(balanceBeforeCard1, sumTransfer);
+        getCardBalanceMinus(balanceBeforeCard2, sumTransfer);
+        getCardBalancePlus(balanceBeforeCard1, sumTransfer);
+        val balanceNewCard1 = dashboardPage.getBalanceCard1();
+        val balanceNewCard2 = dashboardPage.getBalanceCard2();
 
-        assertEquals(balanceAfterCard1, balanceBeforeCard1);
-        assertEquals(balanceAfterCard2, balanceBeforeCard2);
+        assertEquals(balanceBeforeCard1, balanceNewCard1);
+        assertEquals(balanceBeforeCard2, balanceNewCard2);
     }
 
     @Test
